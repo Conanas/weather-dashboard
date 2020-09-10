@@ -8,6 +8,9 @@
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
+
     <!-- style -->
     <link rel="stylesheet" href="./style.css">
     <title>Weather Dashboard</title>
@@ -16,50 +19,99 @@
 <body>
 
     <header>
-        <h1>Weather Dashboard</h1>
+        <div class="container">
+            <div class="row py-2">
+                <div class="col d-flex justify-content-center">
+                    <h1>Weather Dashboard</h1>
+                </div>
+            </div>
+        </div>
     </header>
 
     <main>
-        <section>
-            <!-- current weather -->
-            <!--
-                THEN I am presented with 
-                the city name, 
-                the date, 
-                an icon representation of weather conditions, 
-                the temperature, 
-                the humidity, 
-                the wind speed, 
-                and the UV index 
-            -->
-            <!-- 
-                WHEN I view the UV index
-                THEN I am presented with a color that indicates whether the conditions are favorable, moderate, or severe
-             -->
-        </section>
-        <section>
-            <!-- 5 day forecast -->
-            <!-- 
-                WHEN I view future weather conditions for that city
-                THEN I am presented with a 5-day forecast that displays 
-                the date, 
-                an icon representation of weather conditions, 
-                the temperature, 
-                and the humidity
-             -->
-        </section>
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <section>
+                        <!-- current weather -->
+                        <!--
+                            THEN I am presented with 
+                            the city name, 
+                            the date, 
+                            an icon representation of weather conditions, 
+                            the temperature, 
+                            the humidity, 
+                            the wind speed, 
+                            and the UV index 
+                        -->
+                        <!-- 
+                            WHEN I view the UV index
+                            THEN I am presented with a color that indicates whether the conditions are favorable, moderate, or severe
+                         -->
+                    </section>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <section>
+                        <!-- 5 day forecast -->
+                        <!-- 
+                            WHEN I view future weather conditions for that city
+                            THEN I am presented with a 5-day forecast that displays 
+                            the date, 
+                            an icon representation of weather conditions, 
+                            the temperature, 
+                            and the humidity
+                         -->
+                    </section>
+                </div>
+            </div>
+        </div>
+
     </main>
 
     <aside>
-        <!-- search and search history -->
-        <!-- 
-            WHEN I search for a city
-            THEN I am presented with current and future conditions for that city and that city is added to the search history
-        -->
-        <!-- 
-            WHEN I click on a city in the search history
-            THEN I am again presented with current and future conditions for that city
-         -->
+
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <section>
+                        <!-- search and search history -->
+                        <!-- 
+                            WHEN I search for a city
+                            THEN I am presented with current and future conditions for that city and that city is added to the search history
+                        -->
+
+                        <!-- search form -->
+                        <form>
+                            <label for="search-input">Search for a City: </label><br>
+                            <input type="text" id="search-input">
+                            <button class="search-button"><i class="fas fa-search"></i></button>
+                        </form>
+
+                    </section>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <section>
+                        <!-- 
+                            WHEN I click on a city in the search history
+                            THEN I am again presented with current and future conditions for that city
+                        -->
+
+                        <!-- search history list -->
+                        <ul id="search-history">
+
+                        </ul>
+                    </section>
+                </div>
+            </div>
+        </div>
+
     </aside>
 
     <footer></footer>
