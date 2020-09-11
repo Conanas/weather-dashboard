@@ -4,7 +4,7 @@
 }
 
 #search-aside {
-    background-color: lightgray;
+    background-color: whitesmoke;
 }
 
 #search-input-section {}
@@ -21,7 +21,10 @@
     width: 75%;
 }
 
-#search-button {}
+#search-button {
+    background-color: royalblue;
+    color: white;
+}
 
 #search-history-list {
     list-style: none;
