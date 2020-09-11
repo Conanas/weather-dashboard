@@ -1,10 +1,67 @@
-header {
+#body-header {
     background-color: black;
     color: white;
 }
 
-#search-history {
+#search-aside {
+    background-color: lightgray;
+}
+
+#search-input-section {}
+
+#search-form {}
+
+#search-label {
+    margin-top: 8px;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+#search-input {
+    width: 75%;
+}
+
+#search-button {}
+
+#search-history-list {
     list-style: none;
 }
 
 .search-list-item {}
+
+.search-list-button {
+    width: 100%;
+    padding: 10px;
+    border-width: 1px;
+    background-color: white;
+    text-align: left;
+}
+
+#current-section {
+    margin: 10px 0px 10px 0px;
+    border: 1px solid black;
+}
+
+#current-heading {
+    margin: 12px 0px;
+}
+
+#current-main {}
+
+.current-info {}
+
+#forecast-section {}
+
+#forecast-heading {
+    margin-bottom: 12px;
+}
+
+#forecast-dailies {
+    margin: 0px
+}
+
+.forecast-daily {
+    background-color: royalblue;
+    color: white;
+    margin: 0px 8px 0px 0px;
+}

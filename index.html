@@ -19,12 +19,10 @@
 <body>
 
     <!-- start header -->
-    <header>
-        <div class="container">
-            <div class="row py-2">
-                <div class="col d-flex justify-content-center">
-                    <h1>Weather Dashboard</h1>
-                </div>
+    <header class="container" id="body-header">
+        <div class="row py-2">
+            <div class="col d-flex justify-content-center">
+                <h1>Weather Dashboard</h1>
             </div>
         </div>
     </header>
@@ -35,13 +33,13 @@
         <div class="row">
 
             <!-- start aside -->
-            <aside class="col search-aside">
+            <aside class="col-md-3" id="search-aside">
 
                 <!-- start search input -->
-                <section class="row">
+                <section class="row" id="search-input-section">
 
                     <!-- start search form -->
-                    <form class="col">
+                    <form class="col" id="search-form">
 
                         <!-- search and search history -->
                         <!-- 
@@ -49,9 +47,9 @@
                             THEN I am presented with current and future conditions for that city and that city is added to the search history
                         -->
 
-                        <label for="search-input">Search for a City: </label><br>
+                        <label for="search-input" id="search-label">Search for a City: </label><br>
                         <input type="text" id="search-input">
-                        <button class="search-button"><i class="fas fa-search"></i></button>
+                        <button class="search-button" id="search-button"><i class="fas fa-search"></i></button>
 
                     </form>
                     <!-- end search form -->
@@ -60,22 +58,22 @@
                 <!-- end search input -->
 
                 <!-- start search history list -->
-                <section class="row">
+                <section class="row" id="search-history-section">
 
                     <!-- start search history list -->
-                    <ul class="col" id="search-history">
+                    <ul class="col" id="search-history-list">
                         <!-- 
                             WHEN I click on a city in the search history
                             THEN I am again presented with current and future conditions for that city
                         -->
 
-                        <li class="search-list-item">Los Angeles</li>
-                        <li class="search-list-item">London</li>
-                        <li class="search-list-item">Madrid</li>
-                        <li class="search-list-item">Melbourne</li>
-                        <li class="search-list-item">Moscow</li>
-                        <li class="search-list-item">Rome</li>
-                        <li class="search-list-item">Kuala Lumpur</li>
+                        <li class="search-list-item"><button class="search-list-button">Los Angeles</button></li>
+                        <li class="search-list-item"><button class="search-list-button">London</button></li>
+                        <li class="search-list-item"><button class="search-list-button">Madrid</button></li>
+                        <li class="search-list-item"><button class="search-list-button">Melbourne</button></li>
+                        <li class="search-list-item"><button class="search-list-button">Moscow</button></li>
+                        <li class="search-list-item"><button class="search-list-button">Rome</button></li>
+                        <li class="search-list-item"><button class="search-list-button">Kuala Lumpur</button></li>
                     </ul>
                     <!-- end search history list -->
 
@@ -86,71 +84,133 @@
             <!-- end aside -->
 
             <!-- city section -->
-            <div class="col">
+            <div class="col-md-9">
 
                 <!-- current city section -->
-                <section class="current-section">
-                    <div class="row">
-                        <div class="col">
-                            <!-- current weather -->
-                            <!--
-                                    THEN I am presented with 
-                                    the city name, 
-                                    the date, 
-                                    an icon representation of weather conditions, 
-                                    the temperature, 
-                                    the humidity, 
-                                    the wind speed, 
-                                    and the UV index 
-                                -->
-                            <!-- 
-                                    WHEN I view the UV index
-                                    THEN I am presented with a color that indicates whether the conditions are favorable, moderate, or severe
-                                -->
-                        </div>
+                <section class="row" id="current-section">
+                    <div class="col">
+                        <!-- current weather -->
+                        <!--
+                            THEN I am presented with 
+                            the city name, 
+                            the date, 
+                            an icon representation of weather conditions, 
+                            the temperature, 
+                            the humidity, 
+                            the wind speed, 
+                            and the UV index 
+                        -->
+                        <!-- 
+                            WHEN I view the UV index
+                            THEN I am presented with a color that indicates whether the conditions are favorable, moderate, or severe
+                        -->
+
+                        <h2 id="current-heading">City: Date, Icon</h2>
+
+                        <section id="current-main">
+                            <div class="current-info" id="current-temperature">
+                                <p>Temperature: <span>36 C</span></p>
+                            </div>
+                            <div class="current-info" id="current-humidity">
+                                <p>Humidity: <span>80%</span></p>
+                            </div>
+                            <div class="current-info" id="current-wind-speed">
+                                <p>Wind Speed: <span>5km/h</span></p>
+                            </div>
+                            <div class="current-info" id="current-uv-index">
+                                <p>UV Index: <span>3</span></p>
+                            </div>
+                        </section>
+
                     </div>
                 </section>
                 <!-- end current city section -->
 
                 <!-- 5 day forecast section -->
-                <section class="forecast-section">
-                    <div class="row">
-
+                <section class="row" id="forecast-section">
+                    <div class="col">
                         <!-- 5 day forecast -->
-                        <!-- 
-                                WHEN I view future weather conditions for that city
-                                THEN I am presented with a 5-day forecast that displays 
-                                the date, 
-                                an icon representation of weather conditions, 
-                                the temperature, 
-                                and the humidity
-                            -->
+                        <!-- WHEN I view future weather conditions for that city
+                            THEN I am presented with a 5-day forecast that displays 
+                            the date, 
+                            an icon representation of weather conditions, 
+                            the temperature, 
+                            and the humidity -->
 
-                        <div class="col">
-                            <section>
+                        <h2 id="forecast-heading">5-Day Forecast:</h2>
 
-                            </section>
-                        </div>
-                        <div class="col">
-                            <section>
-
-                            </section>
-                        </div>
-                        <div class="col">
-                            <section>
-
-                            </section>
-                        </div>
-                        <div class="col">
-                            <section>
-
-                            </section>
-                        </div>
-                        <div class="col">
-                            <section>
-
-                            </section>
-                        </div>
+                        <section class="row" id="forecast-dailies">
+                            <div class="col forecast-daily">
+                                <div>
+                                    <h3>Date</h3>
+                                </div>
+                                <div>
+                                    <p>Logo</p>
+                                </div>
+                                <div>
+                                    <p>Temp: <span>28 C</span></p>
+                                </div>
+                                <div>
+                                    <p>Humidity: <span>40%</span></p>
+                                </div>
+                            </div>
+                            <div class="col forecast-daily">
+                                <div>
+                                    <h3>Date</h3>
+                                </div>
+                                <div>
+                                    <p>Logo</p>
+                                </div>
+                                <div>
+                                    <p>Temp: <span>28 C</span></p>
+                                </div>
+                                <div>
+                                    <p>Humidity: <span>40%</span></p>
+                                </div>
+                            </div>
+                            <div class="col forecast-daily">
+                                <div>
+                                    <h3>Date</h3>
+                                </div>
+                                <div>
+                                    <p>Logo</p>
+                                </div>
+                                <div>
+                                    <p>Temp: <span>28 C</span></p>
+                                </div>
+                                <div>
+                                    <p>Humidity: <span>40%</span></p>
+                                </div>
+                            </div>
+                            <div class="col forecast-daily">
+                                <div>
+                                    <h3>Date</h3>
+                                </div>
+                                <div>
+                                    <p>Logo</p>
+                                </div>
+                                <div>
+                                    <p>Temp: <span>28 C</span></p>
+                                </div>
+                                <div>
+                                    <p>Humidity: <span>40%</span></p>
+                                </div>
+                            </div>
+                            <div class="col forecast-daily">
+                                <div>
+                                    <h3>Date</h3>
+                                </div>
+                                <div>
+                                    <p>Logo</p>
+                                </div>
+                                <div>
+                                    <p>Temp: <span>28 C</span></p>
+                                </div>
+                                <div>
+                                    <p>Humidity: <span>40%</span></p>
+                                </div>
+                            </div>
+                        </section>
                     </div>
                 </section>
                 <!-- end 5 day forecast section -->
