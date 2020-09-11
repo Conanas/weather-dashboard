@@ -2,3 +2,9 @@ header {
     background-color: black;
     color: white;
 }
+
+#search-history {
+    list-style: none;
+}
+
+.search-list-item {}

@@ -18,6 +18,7 @@
 
 <body>
 
+    <!-- start header -->
     <header>
         <div class="container">
             <div class="row py-2">
@@ -27,94 +28,143 @@
             </div>
         </div>
     </header>
+    <!-- end header -->
 
-    <main>
-        <div class="container">
-            <div class="row">
-                <div class="col">
-                    <section>
-                        <!-- current weather -->
-                        <!--
-                            THEN I am presented with 
-                            the city name, 
-                            the date, 
-                            an icon representation of weather conditions, 
-                            the temperature, 
-                            the humidity, 
-                            the wind speed, 
-                            and the UV index 
-                        -->
-                        <!-- 
-                            WHEN I view the UV index
-                            THEN I am presented with a color that indicates whether the conditions are favorable, moderate, or severe
-                         -->
-                    </section>
-                </div>
-            </div>
-        </div>
+    <!-- start main -->
+    <main class="container">
+        <div class="row">
 
-        <div class="container">
-            <div class="row">
-                <div class="col">
-                    <section>
-                        <!-- 5 day forecast -->
-                        <!-- 
-                            WHEN I view future weather conditions for that city
-                            THEN I am presented with a 5-day forecast that displays 
-                            the date, 
-                            an icon representation of weather conditions, 
-                            the temperature, 
-                            and the humidity
-                         -->
-                    </section>
-                </div>
-            </div>
-        </div>
+            <!-- start aside -->
+            <aside class="col search-aside">
 
-    </main>
+                <!-- start search input -->
+                <section class="row">
 
-    <aside>
+                    <!-- start search form -->
+                    <form class="col">
 
-        <div class="container">
-            <div class="row">
-                <div class="col">
-                    <section>
                         <!-- search and search history -->
                         <!-- 
                             WHEN I search for a city
                             THEN I am presented with current and future conditions for that city and that city is added to the search history
                         -->
 
-                        <!-- search form -->
-                        <form>
-                            <label for="search-input">Search for a City: </label><br>
-                            <input type="text" id="search-input">
-                            <button class="search-button"><i class="fas fa-search"></i></button>
-                        </form>
+                        <label for="search-input">Search for a City: </label><br>
+                        <input type="text" id="search-input">
+                        <button class="search-button"><i class="fas fa-search"></i></button>
 
-                    </section>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <section>
+                    </form>
+                    <!-- end search form -->
+
+                </section>
+                <!-- end search input -->
+
+                <!-- start search history list -->
+                <section class="row">
+
+                    <!-- start search history list -->
+                    <ul class="col" id="search-history">
                         <!-- 
                             WHEN I click on a city in the search history
                             THEN I am again presented with current and future conditions for that city
                         -->
 
-                        <!-- search history list -->
-                        <ul id="search-history">
+                        <li class="search-list-item">Los Angeles</li>
+                        <li class="search-list-item">London</li>
+                        <li class="search-list-item">Madrid</li>
+                        <li class="search-list-item">Melbourne</li>
+                        <li class="search-list-item">Moscow</li>
+                        <li class="search-list-item">Rome</li>
+                        <li class="search-list-item">Kuala Lumpur</li>
+                    </ul>
+                    <!-- end search history list -->
 
-                        </ul>
-                    </section>
-                </div>
+                </section>
+                <!-- end search history list -->
+
+            </aside>
+            <!-- end aside -->
+
+            <!-- city section -->
+            <div class="col">
+
+                <!-- current city section -->
+                <section class="current-section">
+                    <div class="row">
+                        <div class="col">
+                            <!-- current weather -->
+                            <!--
+                                    THEN I am presented with 
+                                    the city name, 
+                                    the date, 
+                                    an icon representation of weather conditions, 
+                                    the temperature, 
+                                    the humidity, 
+                                    the wind speed, 
+                                    and the UV index 
+                                -->
+                            <!-- 
+                                    WHEN I view the UV index
+                                    THEN I am presented with a color that indicates whether the conditions are favorable, moderate, or severe
+                                -->
+                        </div>
+                    </div>
+                </section>
+                <!-- end current city section -->
+
+                <!-- 5 day forecast section -->
+                <section class="forecast-section">
+                    <div class="row">
+
+                        <!-- 5 day forecast -->
+                        <!-- 
+                                WHEN I view future weather conditions for that city
+                                THEN I am presented with a 5-day forecast that displays 
+                                the date, 
+                                an icon representation of weather conditions, 
+                                the temperature, 
+                                and the humidity
+                            -->
+
+                        <div class="col">
+                            <section>
+
+                            </section>
+                        </div>
+                        <div class="col">
+                            <section>
+
+                            </section>
+                        </div>
+                        <div class="col">
+                            <section>
+
+                            </section>
+                        </div>
+                        <div class="col">
+                            <section>
+
+                            </section>
+                        </div>
+                        <div class="col">
+                            <section>
+
+                            </section>
+                        </div>
+                    </div>
+                </section>
+                <!-- end 5 day forecast section -->
+
             </div>
+            <!-- end city section -->
+
         </div>
+    </main>
+    <!-- start main -->
 
-    </aside>
-
+    <!-- start footer -->
     <footer></footer>
+    <!-- end footer -->
 
     <!-- jquery -->
     <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
