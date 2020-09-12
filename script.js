@@ -54,7 +54,8 @@ function getCityName() {
 // uv functions
 
 function processUVIndex(response) {
-    console.log(`UV Index: ${response.value}`);
+    var uvIndex = parseInt(response.value).toFixed(0);
+    $("#current-uv-index-span").html(uvIndex);
 }
 
 function createUVURL(lat, lon) {
@@ -90,32 +91,20 @@ function processCurrentIcon(icon) {
 }
 
 function processCurrentData(response) {
-    console.log(response);
     var cityName = response.name;
-    console.log(`City Name: ${cityName}`);
-
-    var date = moment().format("MMM Do YY");
-    console.log(`Date: ${date}`);
-
+    var date = moment().format("MMM Do YYYY");
     var icon = response.weather[0].icon;
-    console.log(`Icon: ${icon}`);
-
-    $("#current-heading").text(`${cityName}: ${date}`);
-
-    processCurrentIcon(icon);
-
-    var temperature = response.main.temp;
-    console.log(`Temperature: ${temperature}`);
-
+    var temperature = parseInt(response.main.temp).toFixed(0);
     var humidity = response.main.humidity;
-    console.log(`Humidity: ${humidity}`);
-
     var windSpeed = response.wind.speed;
-    console.log(`Wind Speed: ${windSpeed}`);
-
     var lat = response.coord.lat;
     var lon = response.coord.lon;
 
+    $("#current-heading").text(`${cityName}: ${date}`);
+    processCurrentIcon(icon);
+    $("#current-temperature-span").html(`${temperature}<sup>o</sup>C`);
+    $("#current-humidity-span").html(`${humidity}%`);
+    $("#current-wind-speed-span").html(`${windSpeed}km/h`);
     getUVIndex(lat, lon);
 }
 
