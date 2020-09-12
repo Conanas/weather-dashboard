@@ -11,11 +11,16 @@
 // get city name
 // get apikay
 
+// retrives the api key
 function getAPIKey() {
     var apiKey = "accd5d59f380f6347ac44664ded3ecef";
     return apiKey;
 }
 
+// creates the string for the url request using the user input
+// if there are any spaces in the string then they are replaced with %20
+// can work with blank city input or blank country input
+// turns the input to lower case
 function getCityName() {
     var cityName = $("#city-search-input").val();
     var countryName = $("#country-search-input").val();
@@ -64,11 +69,13 @@ function getCityName() {
 
 // uv functions
 
+// puts the uv index into the UI
 function processUVIndex(response) {
     var uvIndex = parseInt(response.value).toFixed(0);
     $("#current-uv-index-span").html(uvIndex);
 }
 
+// creates the uv url request
 function createUVURL(lat, lon) {
     var apiKey = getAPIKey();
     var uvQueryURL = "http://api.openweathermap.org/data/2.5/uvi?" +
@@ -78,6 +85,7 @@ function createUVURL(lat, lon) {
     return uvQueryURL;
 }
 
+// requests the uv rating for the current location for the day
 function getUVIndex(lat, lon) {
     var uvQueryURL = createUVURL(lat, lon);
     $.ajax({
@@ -89,6 +97,7 @@ function getUVIndex(lat, lon) {
 
 // current day functions
 
+// retrieves the weather icon for the current day of city
 function processCurrentIcon(icon) {
     var iconURL = "http://openweathermap.org/img/wn/" +
         icon + "@2x.png";
@@ -101,6 +110,7 @@ function processCurrentIcon(icon) {
     $("#current-heading").append(iconImage);
 }
 
+// processes the current weather data and puts the information into the UI
 function processCurrentData(response) {
     var cityName = response.name;
     var cityCountry = response.sys.country;
@@ -118,8 +128,14 @@ function processCurrentData(response) {
     $("#current-humidity-span").html(`${humidity}%`);
     $("#current-wind-speed-span").html(`${windSpeed}km/h`);
     getUVIndex(lat, lon);
+
+    // save city add button to history list
+
+
 }
 
+// creates a url from user input
+// gets the api key and city from user input to create url
 function createCurrentURL() {
     var apiKey = getAPIKey();
     var cityName = getCityName();
@@ -130,6 +146,8 @@ function createCurrentURL() {
     return currentURL;
 }
 
+// retrieves weather data from openweathermap api
+// stores created url from user input
 function getCurrentData() {
     var currentURL = createCurrentURL();
     $.ajax({
@@ -137,12 +155,12 @@ function getCurrentData() {
             method: "GET"
         }).then(processCurrentData)
         .catch(function(error) {
-            alert("Try Again");
+            alert("Could not find location");
         });
 }
 
 
-// search city functions
+// search city functions and event listener
 
 function searchCity(event) {
     event.preventDefault();
