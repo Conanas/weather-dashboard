@@ -45,12 +45,11 @@
     border: 1px solid black;
 }
 
-#current-heading {
-    margin: 12px 0px;
-}
+#current-heading {}
 
 #current-icon {
     height: 80px;
+    margin-left: 5px;
 }
 
 #current-main {}
