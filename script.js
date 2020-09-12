@@ -18,8 +18,18 @@ function getAPIKey() {
 
 function getCityName() {
     var cityName = $("#city-search-input").val();
-    console.log(cityName.split(" ").join());
-    return cityName.split(" ").join();
+    var countryName = $("#country-search-input").val();
+    var searchTerm;
+    if (cityName != "") {
+        searchTerm = cityName.replace(/\s/g, "%20");
+        if (countryName != "") {
+            searchTerm += `,${countryName.replace(/\s/g, "%20")}`;
+        }
+    } else if (cityName === "" && countryName != "") {
+        searchTerm = countryName.replace(/\s/g, "%20");
+    }
+    console.log(searchTerm);
+    return searchTerm.toLowerCase();
 }
 
 
@@ -93,6 +103,7 @@ function processCurrentIcon(icon) {
 
 function processCurrentData(response) {
     var cityName = response.name;
+    var cityCountry = response.sys.country;
     var date = moment().format("MMM Do YYYY");
     var icon = response.weather[0].icon;
     var temperature = parseInt(response.main.temp).toFixed(0);
@@ -101,7 +112,7 @@ function processCurrentData(response) {
     var lat = response.coord.lat;
     var lon = response.coord.lon;
 
-    $("#current-heading").text(`${cityName}: ${date}`);
+    $("#current-heading").text(`${cityName}, ${cityCountry}: ${date}`);
     processCurrentIcon(icon);
     $("#current-temperature-span").html(`${temperature}<sup>o</sup>C`);
     $("#current-humidity-span").html(`${humidity}%`);
@@ -122,9 +133,12 @@ function createCurrentURL() {
 function getCurrentData() {
     var currentURL = createCurrentURL();
     $.ajax({
-        url: currentURL,
-        method: "GET"
-    }).then(processCurrentData);
+            url: currentURL,
+            method: "GET"
+        }).then(processCurrentData)
+        .catch(function(error) {
+            alert("Try Again");
+        });
 }
 
 
