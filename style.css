@@ -17,9 +17,11 @@
     font-weight: bold;
 }
 
-#city-search-input {
+.search-input {
     width: 75%;
 }
+
+#city-search-input {}
 
 #country-search-input {}
 
