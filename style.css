@@ -17,9 +17,11 @@
     font-weight: bold;
 }
 
-#search-input {
+#city-search-input {
     width: 75%;
 }
+
+#country-search-input {}
 
 #search-button {
     background-color: royalblue;

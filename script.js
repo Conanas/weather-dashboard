@@ -17,8 +17,9 @@ function getAPIKey() {
 }
 
 function getCityName() {
-    var cityName = $("#search-input").val();
-    return cityName;
+    var cityName = $("#city-search-input").val();
+    console.log(cityName.split(" ").join());
+    return cityName.split(" ").join();
 }
 
 
