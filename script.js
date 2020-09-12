@@ -64,7 +64,11 @@ function getCityName() {
 
 
 
+// save functions
 
+function saveCity(cityName, response) {
+    localStorage.setItem(cityName, JSON.stringify(response));
+}
 
 
 // uv functions
@@ -129,8 +133,9 @@ function processCurrentData(response) {
     $("#current-wind-speed-span").html(`${windSpeed}km/h`);
     getUVIndex(lat, lon);
 
-    // save city add button to history list
-
+    // save city and add button to history list
+    saveCity(`${cityName}, ${cityCountry}`, response);
+    // addHistoryButton()
 
 }
 
@@ -154,7 +159,7 @@ function getCurrentData() {
             url: currentURL,
             method: "GET"
         }).then(processCurrentData)
-        .catch(function(error) {
+        .catch(function() {
             alert("Could not find location");
         });
 }
