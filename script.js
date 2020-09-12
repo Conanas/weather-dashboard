@@ -77,6 +77,18 @@ function getUVIndex(lat, lon) {
 
 // current day functions
 
+function processCurrentIcon(icon) {
+    var iconURL = "http://openweathermap.org/img/wn/" +
+        icon + "@2x.png";
+    var iconImage = $("<img>");
+    iconImage.attr({
+        src: iconURL,
+        alt: "icon",
+        id: "current-icon"
+    });
+    $("#current-heading").append(iconImage);
+}
+
 function processCurrentData(response) {
     console.log(response);
     var cityName = response.name;
@@ -88,10 +100,9 @@ function processCurrentData(response) {
     var icon = response.weather[0].icon;
     console.log(`Icon: ${icon}`);
 
-    var iconURL = "http://openweathermap.org/img/wn/" +
-        icon + "@2x.png";
+    $("#current-heading").text(`${cityName}: ${date}`);
 
-    $("#current-heading").text(`${cityName}: ${date}, `)
+    processCurrentIcon(icon);
 
     var temperature = response.main.temp;
     console.log(`Temperature: ${temperature}`);
