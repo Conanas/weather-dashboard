@@ -49,6 +49,10 @@
     margin: 12px 0px;
 }
 
+#current-icon {
+    height: 80px;
+}
+
 #current-main {}
 
 .current-info {}
