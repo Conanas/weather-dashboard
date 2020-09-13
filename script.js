@@ -72,7 +72,21 @@ function getLastVisitKey() {
     return lastVisitKey;
 }
 
+// delete City from localStorage
+function deleteCity(event) {
+
+}
+
+// load city from localStorage
+function loadCity(event) {
+    var cityName = event.target.dataset.name;
+    var response = JSON.parse(localStorage.getItem(cityName));
+    processCurrentData(response);
+}
+
 // check if the city is already saved in local Storage
+// add event listener to history button
+// add event listener to delete history button
 function buttonCityCheck(cityNameCountry) {
     var cityExists = false;
     $(".search-list-button").each(function() {
@@ -101,10 +115,13 @@ function addHistoryButton(cityNameCountry) {
         searchListButton.attr("data-name", cityNameCountry);
         searchListButton.text(cityNameCountry);
         searchListItem.append(searchListButton);
+        searchListButton.on("click", loadCity);
 
         var closeSearchButton = $(`<i class="fas fa-window-close"></i>`);
         closeSearchButton.addClass("delete-search-button");
+        closeSearchButton.attr("data-name", cityNameCountry);
         searchListButton.prepend(closeSearchButton);
+        closeSearchButton.on("click", deleteCity);
     }
 }
 
