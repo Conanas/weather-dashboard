@@ -66,7 +66,7 @@ function processForecastData(response) {
 // creates 5 day forecast url
 function createForecastURL(cityNameCountry) {
     var apiKey = getAPIKey();
-    var forecastURL = "http://api.openweathermap.org/data/2.5/forecast?units=metric&" +
+    var forecastURL = "https://api.openweathermap.org/data/2.5/forecast?units=metric&" +
         "q=" + cityNameCountry +
         "&appid=" + apiKey;
     console.log(forecastURL);
@@ -187,7 +187,7 @@ function processUVIndex(response) {
 // creates the uv url to request data from
 function createUVURL(lat, lon) {
     var apiKey = getAPIKey();
-    var uvQueryURL = "http://api.openweathermap.org/data/2.5/uvi?" +
+    var uvQueryURL = "https://api.openweathermap.org/data/2.5/uvi?" +
         "appid=" + apiKey +
         "&lat=" + lat +
         "&lon=" + lon;
@@ -208,7 +208,7 @@ function getUVIndex(lat, lon) {
 // retrieves the weather icon for the city
 // this function is used for current day and the 5 day forecast
 function getIconImage(icon) {
-    var iconURL = "http://openweathermap.org/img/wn/" +
+    var iconURL = "https://openweathermap.org/img/wn/" +
         icon + "@2x.png";
     var iconImage = $("<img>");
     iconImage.attr({
@@ -258,7 +258,7 @@ function processCurrentData(response) {
 function createCurrentURL() {
     var apiKey = getAPIKey();
     var cityName = getCityName();
-    var currentURL = "http://api.openweathermap.org/data/2.5/weather?units=metric&" +
+    var currentURL = "https://api.openweathermap.org/data/2.5/weather?units=metric&" +
         "q=" + cityName +
         "&appid=" + apiKey;
     console.log(currentURL);
@@ -284,7 +284,7 @@ function getCurrentData() {
 function createDefaultURL() {
     var apiKey = getAPIKey();
     var cityName = "Melbourne,AU";
-    var defaultURL = "http://api.openweathermap.org/data/2.5/weather?units=metric&" +
+    var defaultURL = "https://api.openweathermap.org/data/2.5/weather?units=metric&" +
         "q=" + cityName +
         "&appid=" + apiKey;
     return defaultURL;
