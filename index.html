@@ -42,9 +42,6 @@
                     <form class="col" id="search-form">
 
                         <!-- search and search history -->
-                        <!-- WHEN I search for a city
-                            THEN I am presented with current and future conditions for that city and that city is added to the search history -->
-
                         <label for="search-input" id="search-label">Search for a City: </label><br>
                         <input type="text" class="search-input" id="city-search-input" placeholder="City">
                         <input type="text" class="search-input" id="country-search-input" placeholder="Country (optional)">
@@ -61,11 +58,6 @@
 
                     <!-- start search history list -->
                     <ul class="col" id="search-history-list">
-                        <!-- 
-                            WHEN I click on a city in the search history
-                            THEN I am again presented with current and future conditions for that city
-                        -->
-
                     </ul>
                     <!-- end search history list -->
 
@@ -82,21 +74,6 @@
                 <section class="row" id="current-section">
                     <div class="col">
                         <!-- current weather -->
-                        <!--
-                            THEN I am presented with 
-                            the city name, 
-                            the date, 
-                            an icon representation of weather conditions, 
-                            the temperature, 
-                            the humidity, 
-                            the wind speed, 
-                            and the UV index 
-                        -->
-                        <!-- 
-                            WHEN I view the UV index
-                            THEN I am presented with a color that indicates whether the conditions are favorable, moderate, or severe
-                        -->
-
                         <h2 id="current-heading"></h2>
 
                         <section id="current-main">
@@ -122,13 +99,6 @@
                 <section class="row" id="forecast-section">
                     <div class="col">
                         <!-- 5 day forecast -->
-                        <!-- WHEN I view future weather conditions for that city
-                            THEN I am presented with a 5-day forecast that displays 
-                            the date, 
-                            an icon representation of weather conditions, 
-                            the temperature, 
-                            and the humidity -->
-
                         <h2 id="forecast-heading">5-Day Forecast:</h2>
 
                         <section class="row" id="forecast-dailies">
@@ -143,10 +113,6 @@
         </div>
     </main>
     <!-- start main -->
-
-    <!-- start footer -->
-    <footer></footer>
-    <!-- end footer -->
 
     <!-- Moment.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js" integrity="sha512-rmZcZsyhe0/MAjquhTgiUcb4d9knaFc7b5xAfju483gbEXTkeJRUMIPk6s3ySZMYUHEcjKbjLjyddGWMrNEvZg==" crossorigin="anonymous"></script>

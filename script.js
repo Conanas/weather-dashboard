@@ -28,14 +28,23 @@ function getCityName() {
 
 // updates the 5 day forecast by clearing the current 5 day forecast and filling with the new locations data
 function processForecastData(response) {
+    // stores 5 day forecast element in index.html
+    // and clears it
     var forecastDailies = $("#forecast-dailies");
     forecastDailies.empty();
+
+    // for every day at 12pm for 5 days increment is 8 due to each value is 3 hours ahead
     for (var i = 1; i < response.list.length; i += 8) {
+
+        // variables to retrieve and store date, icon, temp and humidity
+        // from response data for 5 day forecast
         var date = moment(response.list[i].dt_txt).format("MMM Do");
         var icon = response.list[i].weather[0].icon;
         var temp = response.list[i].main.temp;
         var humidity = response.list[i].main.humidity;
 
+        // creates elements using the retrieved values 
+        // and appends the elements to the 5 day forecast element
         var forecastDiv = $(`<div class="col-md forecast-daily"></div>`);
         forecastDailies.append(forecastDiv);
 
@@ -64,7 +73,7 @@ function createForecastURL(cityNameCountry) {
     return forecastURL;
 }
 
-// gets the forecast data
+// gets the forecast data using the created url then prompts the data processing
 function getForecastData(cityNameCountry) {
     var forecastURL = createForecastURL(cityNameCountry);
     $.ajax({
@@ -75,13 +84,13 @@ function getForecastData(cityNameCountry) {
 
 // save functions
 
-// get lastVisit save key
+// stores and retrieves the get lastVisit save key
 function getLastVisitKey() {
     var lastVisitKey = "lastVisit";
     return lastVisitKey;
 }
 
-// delete City from localStorage
+// deletes city button from search history list and deletes city from localStorage
 function deleteCity(event) {
     event.stopPropagation();
     var cityName = event.target.dataset.name;
@@ -94,7 +103,7 @@ function deleteCity(event) {
     })
 }
 
-// load city from localStorage
+// load city from localStorage and prompts processing of data
 function loadCity(event) {
     var cityName = event.target.dataset.name;
     var response = JSON.parse(localStorage.getItem(cityName));
@@ -102,8 +111,6 @@ function loadCity(event) {
 }
 
 // check if the city is already saved in local Storage
-// add event listener to history button
-// add event listener to delete history button
 function buttonCityCheck(cityNameCountry) {
     var cityExists = false;
     $(".search-list-button").each(function() {
@@ -119,6 +126,7 @@ function buttonCityCheck(cityNameCountry) {
 }
 
 // create city button and add to history if button does not already exist
+// and adds event listener to button and close icon
 function addHistoryButton(cityNameCountry) {
     if (buttonCityCheck(cityNameCountry) === false) {
         var searchHistoryList = $("#search-history-list");
@@ -142,13 +150,13 @@ function addHistoryButton(cityNameCountry) {
     }
 }
 
-// save the last visited city
+// save the last visited city into the localStorage as lastVisited
 function saveLastVisit(response) {
     var lastVisitKey = getLastVisitKey()
     localStorage.setItem(lastVisitKey, JSON.stringify(response));
 }
 
-// save city to localStorage
+// save city response object to localStorage
 function saveCity(cityName, response) {
     localStorage.setItem(cityName, JSON.stringify(response));
 }
@@ -162,7 +170,7 @@ function processUVIndex(response) {
     var uvIndexSpan = $("#current-uv-index-span");
     var backgroundColor;
     uvIndexSpan.html(uvIndex);
-    // favourable, moderate, severe
+
     if (0 <= uvIndex && uvIndex < 3) {
         backgroundColor = "#63d063";
         uvIndexSpan.css("color", "black");
@@ -176,7 +184,7 @@ function processUVIndex(response) {
     uvIndexSpan.css("background-color", backgroundColor);
 }
 
-// creates the uv url request
+// creates the uv url to request data from
 function createUVURL(lat, lon) {
     var apiKey = getAPIKey();
     var uvQueryURL = "http://api.openweathermap.org/data/2.5/uvi?" +
@@ -197,7 +205,8 @@ function getUVIndex(lat, lon) {
 
 // current day functions
 
-// retrieves the weather icon for the current day of city
+// retrieves the weather icon for the city
+// this function is used for current day and the 5 day forecast
 function getIconImage(icon) {
     var iconURL = "http://openweathermap.org/img/wn/" +
         icon + "@2x.png";
@@ -212,6 +221,8 @@ function getIconImage(icon) {
 // processes the current weather data and puts the information into the UI
 // then process the forecast data
 function processCurrentData(response) {
+
+    // variables store the retrieved values from the response object
     var cityName = response.name;
     var cityCountry = response.sys.country;
     var date = moment().format("MMM Do YYYY");
@@ -223,6 +234,7 @@ function processCurrentData(response) {
     var lon = response.coord.lon;
     var cityNameCountry = `${cityName}, ${cityCountry}`;
 
+    // edit the text in the ui
     $("#current-heading").text(`${cityNameCountry}: ${date}`);
     var iconImage = getIconImage(icon);
     iconImage.attr("id", "current-icon");
@@ -237,8 +249,8 @@ function processCurrentData(response) {
     saveLastVisit(response);
     addHistoryButton(cityNameCountry);
 
+    // get the data for the 5 day forecast
     getForecastData(cityNameCountry);
-
 }
 
 // creates a url from user input
@@ -254,7 +266,8 @@ function createCurrentURL() {
 }
 
 // retrieves weather data from openweathermap api
-// stores created url from user input
+// and prompts the process data
+// if city can't be find then an alert pops up informing the user
 function getCurrentData() {
     var currentURL = createCurrentURL();
     $.ajax({
@@ -267,7 +280,7 @@ function getCurrentData() {
         });
 }
 
-// create the url for the default city if no cities in local storage
+// create the url for the default city if there are no cities in local storage
 function createDefaultURL() {
     var apiKey = getAPIKey();
     var cityName = "Melbourne,AU";
@@ -310,10 +323,14 @@ function loadHistoryButtons() {
 
 // search city functions and event listener
 
+// search for city using the user inputs
 function searchCity(event) {
     event.preventDefault();
     getCurrentData();
 }
+
+
+// upon load
 
 checkLastVisit();
 loadHistoryButtons();
