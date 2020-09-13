@@ -64,6 +64,10 @@
 
 .current-info {}
 
+#current-uv-index-span {
+    padding: 0.3em;
+}
+
 #forecast-section {}
 
 #forecast-heading {
