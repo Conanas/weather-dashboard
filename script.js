@@ -73,7 +73,18 @@ function getLastVisitKey() {
 }
 
 // create city button and add to history
-function addHistoryButton() {
+function addHistoryButton(cityNameCountry) {
+    var searchHistoryList = $("#search-history-list");
+
+    var searchListItem = $("<li>");
+    searchListItem.addClass("search-list-item");
+    searchHistoryList.append(searchListItem);
+
+    var searchListButton = $("<button>");
+    searchListButton.addClass("search-list-button");
+    searchListButton.text(cityNameCountry);
+    searchListItem.append(searchListButton);
+
 
 }
 
@@ -143,8 +154,9 @@ function processCurrentData(response) {
     var windSpeed = response.wind.speed;
     var lat = response.coord.lat;
     var lon = response.coord.lon;
+    var cityNameCountry = `${cityName}, ${cityCountry}`;
 
-    $("#current-heading").text(`${cityName}, ${cityCountry}: ${date}`);
+    $("#current-heading").text(`${cityNameCountry}: ${date}`);
     processCurrentIcon(icon);
     $("#current-temperature-span").html(`${temperature}<sup>o</sup>C`);
     $("#current-humidity-span").html(`${humidity}%`);
@@ -152,9 +164,9 @@ function processCurrentData(response) {
     getUVIndex(lat, lon);
 
     // save city and add button to history list
-    saveCity(`${cityName}, ${cityCountry}`, response);
+    saveCity(`${cityNameCountry}`, response);
     saveLastVisit(response);
-    addHistoryButton();
+    addHistoryButton(cityNameCountry);
 
 }
 
@@ -214,6 +226,11 @@ function checkLastVisit() {
 }
 
 
+function loadHistoryButtons() {
+
+}
+
+
 // search city functions and event listener
 
 function searchCity(event) {
@@ -223,4 +240,5 @@ function searchCity(event) {
 }
 
 checkLastVisit();
+loadHistoryButtons();
 $("#search-button").on("click", searchCity);
