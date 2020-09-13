@@ -74,7 +74,15 @@ function getLastVisitKey() {
 
 // delete City from localStorage
 function deleteCity(event) {
-
+    event.stopPropagation();
+    var cityName = event.target.dataset.name;
+    console.log(event);
+    $(".search-list-button").each(function() {
+        if ($(this).attr("data-name") === cityName) {
+            $(this).remove();
+            localStorage.removeItem(cityName);
+        }
+    })
 }
 
 // load city from localStorage
