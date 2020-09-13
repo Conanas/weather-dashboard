@@ -66,6 +66,24 @@ function getCityName() {
 
 // save functions
 
+// get lastVisit save key
+function getLastVisitKey() {
+    var lastVisitKey = "lastVisit";
+    return lastVisitKey;
+}
+
+// create city button and add to history
+function addHistoryButton() {
+
+}
+
+// save the last visited city
+function saveLastVisit(response) {
+    var lastVisitKey = getLastVisitKey()
+    localStorage.setItem(lastVisitKey, JSON.stringify(response));
+}
+
+// save city to localStorage
 function saveCity(cityName, response) {
     localStorage.setItem(cityName, JSON.stringify(response));
 }
@@ -135,7 +153,8 @@ function processCurrentData(response) {
 
     // save city and add button to history list
     saveCity(`${cityName}, ${cityCountry}`, response);
-    // addHistoryButton()
+    saveLastVisit(response);
+    addHistoryButton();
 
 }
 
@@ -158,10 +177,44 @@ function getCurrentData() {
     $.ajax({
             url: currentURL,
             method: "GET"
-        }).then(processCurrentData)
+        })
+        .then(processCurrentData)
         .catch(function() {
             alert("Could not find location");
         });
+}
+
+function createDefaultURL() {
+    var apiKey = getAPIKey();
+    var cityName = "Melbourne,AU";
+    var defaultURL = "http://api.openweathermap.org/data/2.5/weather?units=metric&" +
+        "q=" + cityName +
+        "&appid=" + apiKey;
+    return defaultURL;
+}
+
+function loadDefaultCity() {
+    var defaultURL = createDefaultURL();
+    $.ajax({
+            url: defaultURL,
+            method: "GET"
+        })
+        .then(processCurrentData);
+}
+
+function loadLastVisit(lastVisit) {
+    processCurrentData(lastVisit);
+}
+
+// check if there is a city in the database that was last visited
+function checkLastVisit() {
+    var lastVisitKey = getLastVisitKey();
+    var lastVisit = JSON.parse(localStorage.getItem(lastVisitKey));
+    if (lastVisit === null) {
+        loadDefaultCity();
+    } else {
+        loadLastVisit(lastVisit);
+    }
 }
 
 
@@ -173,4 +226,5 @@ function searchCity(event) {
     // getForecast();
 }
 
+checkLastVisit();
 $("#search-button").on("click", searchCity);
