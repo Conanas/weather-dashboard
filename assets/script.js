@@ -20,7 +20,7 @@ function getCityName() {
     } else if (cityName === "" && countryName != "") {
         searchTerm = countryName.replace(/\s/g, "%20");
     }
-    console.log(searchTerm);
+    console.log("search term: " + searchTerm);
     return searchTerm.toLowerCase();
 }
 
@@ -69,13 +69,13 @@ function createForecastURL(cityNameCountry) {
     var forecastURL = "https://api.openweathermap.org/data/2.5/forecast?units=metric&" +
         "q=" + cityNameCountry +
         "&appid=" + apiKey;
-    console.log(forecastURL);
+    console.log("forecast url: " + forecastURL);
     return forecastURL;
 }
 
 // gets the forecast data using the created url then prompts the data processing
 function getForecastData(cityNameCountry) {
-    var forecastURL = createForecastURL(cityNameCountry);
+    var forecastURL = createForecastURL(cityNameCountry.replace(/\s/g, ""));
     $.ajax({
         url: forecastURL,
         method: "GET"
@@ -94,7 +94,6 @@ function getLastVisitKey() {
 function deleteCity(event) {
     event.stopPropagation();
     var cityName = event.target.dataset.name;
-    console.log(event);
     $(".search-list-button").each(function() {
         if ($(this).attr("data-name") === cityName) {
             $(this).remove();
@@ -261,7 +260,7 @@ function createCurrentURL() {
     var currentURL = "https://api.openweathermap.org/data/2.5/weather?units=metric&" +
         "q=" + cityName +
         "&appid=" + apiKey;
-    console.log(currentURL);
+    console.log("current url: " + currentURL);
     return currentURL;
 }
 
