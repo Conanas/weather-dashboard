@@ -202,10 +202,6 @@ function loadDefaultCity() {
         .then(processCurrentData);
 }
 
-function loadLastVisit(lastVisit) {
-    processCurrentData(lastVisit);
-}
-
 // check if there is a city in the database that was last visited
 function checkLastVisit() {
     var lastVisitKey = getLastVisitKey();
@@ -213,7 +209,7 @@ function checkLastVisit() {
     if (lastVisit === null) {
         loadDefaultCity();
     } else {
-        loadLastVisit(lastVisit);
+        processCurrentData(lastVisit);
     }
 }
 
