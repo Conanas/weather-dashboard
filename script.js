@@ -148,9 +148,24 @@ function saveCity(cityName, response) {
 // uv functions
 
 // puts the uv index into the UI
+// changes the backgound color of the uv index span
 function processUVIndex(response) {
-    var uvIndex = parseInt(response.value).toFixed(0);
-    $("#current-uv-index-span").html(uvIndex);
+    var uvIndex = parseFloat(response.value);
+    var uvIndexSpan = $("#current-uv-index-span");
+    var backgroundColor;
+    uvIndexSpan.html(uvIndex);
+    // favourable, moderate, severe
+    if (0 <= uvIndex && uvIndex < 3) {
+        backgroundColor = "#63d063";
+        uvIndexSpan.css("color", "black");
+    } else if (3 <= uvIndex && uvIndex < 6) {
+        backgroundColor = "yellow";
+        uvIndexSpan.css("color", "black");
+    } else if (6 <= uvIndex) {
+        backgroundColor = "red";
+        uvIndexSpan.css("color", "white");
+    }
+    uvIndexSpan.css("background-color", backgroundColor);
 }
 
 // creates the uv url request
