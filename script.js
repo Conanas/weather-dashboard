@@ -72,20 +72,37 @@ function getLastVisitKey() {
     return lastVisitKey;
 }
 
-// create city button and add to history
+// check if the city is already saved in local Storage
+function buttonCityCheck(cityNameCountry) {
+    var cityExists = false;
+    $(".search-list-button").each(function() {
+        if ($(this).attr("data-name") === cityNameCountry) {
+            console.log("City exists");
+            cityExists = true;
+        }
+    })
+    if (cityExists) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+// create city button and add to history if button does not already exist
 function addHistoryButton(cityNameCountry) {
-    var searchHistoryList = $("#search-history-list");
+    if (buttonCityCheck(cityNameCountry) === false) {
+        var searchHistoryList = $("#search-history-list");
 
-    var searchListItem = $("<li>");
-    searchListItem.addClass("search-list-item");
-    searchHistoryList.append(searchListItem);
+        var searchListItem = $("<li>");
+        searchListItem.addClass("search-list-item");
+        searchHistoryList.append(searchListItem);
 
-    var searchListButton = $("<button>");
-    searchListButton.addClass("search-list-button");
-    searchListButton.text(cityNameCountry);
-    searchListItem.append(searchListButton);
-
-
+        var searchListButton = $("<button>");
+        searchListButton.addClass("search-list-button");
+        searchListButton.attr("data-name", cityNameCountry);
+        searchListButton.text(cityNameCountry);
+        searchListItem.append(searchListButton);
+    }
 }
 
 // save the last visited city
@@ -196,6 +213,7 @@ function getCurrentData() {
         });
 }
 
+// create the url for the default city if no cities in local storage
 function createDefaultURL() {
     var apiKey = getAPIKey();
     var cityName = "Melbourne,AU";
@@ -205,6 +223,7 @@ function createDefaultURL() {
     return defaultURL;
 }
 
+// loads default city on start up if there are no cities in storage
 function loadDefaultCity() {
     var defaultURL = createDefaultURL();
     $.ajax({
@@ -225,9 +244,14 @@ function checkLastVisit() {
     }
 }
 
-
+// load search history buttons
 function loadHistoryButtons() {
-
+    var lastVisitKey = getLastVisitKey();
+    for (var i = 0; i < localStorage.length; i++) {
+        if (localStorage.key(i) != lastVisitKey) {
+            addHistoryButton(localStorage.key(i));
+        }
+    }
 }
 
 
