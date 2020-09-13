@@ -101,6 +101,10 @@ function addHistoryButton(cityNameCountry) {
         searchListButton.attr("data-name", cityNameCountry);
         searchListButton.text(cityNameCountry);
         searchListItem.append(searchListButton);
+
+        var closeSearchButton = $(`<i class="fas fa-window-close"></i>`);
+        closeSearchButton.addClass("delete-search-button");
+        searchListButton.prepend(closeSearchButton);
     }
 }
 
