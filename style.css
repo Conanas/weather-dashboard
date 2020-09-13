@@ -1,15 +1,19 @@
+/* document header */
+
 #body-header {
     background-color: black;
     color: white;
 }
 
+
+/* aside search bar */
+
 #search-aside {
     background-color: whitesmoke;
 }
 
-#search-input-section {}
 
-#search-form {}
+/* label for search input */
 
 #search-label {
     margin-top: 8px;
@@ -17,24 +21,30 @@
     font-weight: bold;
 }
 
+
+/* search input box */
+
 .search-input {
     width: 75%;
 }
 
-#city-search-input {}
 
-#country-search-input {}
+/* search button */
 
 #search-button {
     background-color: royalblue;
     color: white;
 }
 
+
+/* search history list of buttons */
+
 #search-history-list {
     list-style: none;
 }
 
-.search-list-item {}
+
+/* search history buttons */
 
 .search-list-button {
     width: 100%;
@@ -44,43 +54,54 @@
     text-align: left;
 }
 
+
+/* delete search history buttons */
+
 .delete-search-button {
     margin-right: 10px;
 }
+
+
+/* main current day weather section */
 
 #current-section {
     margin: 10px 0px 10px 0px;
     border: 1px solid black;
 }
 
-#current-heading {}
+
+/* current day weather icon */
 
 #current-icon {
     height: 80px;
     margin-left: 5px;
 }
 
-#current-main {}
 
-.current-info {}
+/* current day uv index element */
 
 #current-uv-index-span {
     padding: 0.3em;
 }
 
-#forecast-section {}
+
+/* 5 day forecast heading */
 
 #forecast-heading {
     margin-bottom: 8px;
 }
 
-#forecast-dailies {}
+
+/* 5 day forecast divs */
 
 .forecast-daily {
     background-color: royalblue;
     color: white;
     margin: 8px 8px 0px 0px;
 }
+
+
+/* 5 day forecast icons */
 
 .forecast-icon {
     height: 40px;
