@@ -77,7 +77,6 @@ function buttonCityCheck(cityNameCountry) {
     var cityExists = false;
     $(".search-list-button").each(function() {
         if ($(this).attr("data-name") === cityNameCountry) {
-            console.log("City exists");
             cityExists = true;
         }
     })
