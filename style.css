@@ -44,6 +44,10 @@
     text-align: left;
 }
 
+.delete-search-button {
+    margin-right: 10px;
+}
+
 #current-section {
     margin: 10px 0px 10px 0px;
     border: 1px solid black;
