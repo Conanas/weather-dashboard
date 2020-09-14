@@ -85,7 +85,6 @@ body {
 /* main current day weather section */
 
 #current-section {
-    /* margin: 10px 0px 10px 0px; */
     background-color: var(--light);
     color: var(--darkest);
 }
