@@ -76,7 +76,7 @@ function processForecastData(response) {
 
         // creates the div to display the temp
         // appends to forecast div
-        var tempDiv = $(`<div class="forecast-temp"><p>Temp: ${temp}<sup>o</sup>C</p></div>`);
+        var tempDiv = $(`<div class="forecast-temp"><p>Temp: ${temp.toFixed(1)}<sup>o</sup>C</p></div>`);
         forecastDiv.append(tempDiv);
 
         // creates div to display humidity
@@ -242,19 +242,19 @@ function processUVIndex(response) {
     // store background colour as blue
     // change the text color to black
     if (0 <= uvIndex && uvIndex < 3) {
-        backgroundColor = "#63d063";
+        backgroundColor = "#99ddff";
         uvIndexSpan.css("color", "black");
     } else if (3 <= uvIndex && uvIndex < 6) {
         // if uv index is between 3 and 6
         // store background color as yellow
         // change text color to black
-        backgroundColor = "yellow";
+        backgroundColor = "#ffff99";
         uvIndexSpan.css("color", "black");
     } else if (6 <= uvIndex) {
         // if uv index is greater than 6
         // store background color as red
         // change font colour to white
-        backgroundColor = "red";
+        backgroundColor = "#ff4d4d";
         uvIndexSpan.css("color", "white");
     }
     // change the background color of the uv display element
