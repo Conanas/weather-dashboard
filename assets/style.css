@@ -3,6 +3,7 @@
 :root {
     --darkest: #091D34;
     --dark: #133863;
+    --newTeal: #92bdd3;
     --mid: #236AB9;
     --light: #609CE1;
     --lightest: #E1ECF9;
@@ -13,14 +14,20 @@
 
 body {
     background-color: var(--lightest);
+    font-family: 'Open Sans Condensed', sans-serif;
 }
 
 
 /* document header */
 
 #body-header {
-    background-color: var(--darkest);
+    background-color: var(--dark);
     color: var(--lightest);
+}
+
+#body-header h1 {
+    margin-top: 8px;
+    font-weight: 700;
 }
 
 
@@ -82,11 +89,34 @@ body {
 }
 
 
+/* city display section */
+
+.city-section {
+    background-color: var(--dark);
+}
+
+
 /* main current day weather section */
 
 #current-section {
-    background-color: var(--light);
-    color: var(--darkest);
+    background-color: #b6d3e2;
+    color: var(--dark);
+    font-weight: bold;
+    margin-right: -7px;
+}
+
+
+/* current heading */
+
+#current-heading {
+    font-weight: bold;
+}
+
+
+/* current info section */
+
+.current-info {
+    font-size: 1.5em;
 }
 
 
@@ -119,13 +149,22 @@ body {
     color: var(--lightest);
 }
 
+#forecast-heading h2 {
+    margin-top: 0.5rem;
+}
+
 
 /* 5 day forecast divs */
 
 .forecast-daily {
-    background-color: var(--light);
-    color: var(--lightest);
-    margin: 8px 8px 0px 0px;
+    background-color: var(--newTeal);
+    color: var(--dark);
+    margin: 0px 8px 8px 0px;
+    font-weight: bold;
+}
+
+.forecast-daily h3 {
+    margin-top: 8px;
 }
 
 
