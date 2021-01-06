@@ -13,7 +13,7 @@
 /* body */
 
 body {
-    background-color: var(--lightest);
+    background-color: var(--dark);
     font-family: 'Open Sans Condensed', sans-serif;
 }
 
